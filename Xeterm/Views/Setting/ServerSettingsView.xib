@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ServerSettingsView">
+            <rect key="frame" x="0.0" y="0.0" width="260" height="240"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_setting_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Gy7-wA-rmM">
+                    <rect key="frame" x="0.0" y="0.0" width="260" height="240"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="服务器设置" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jcH-kQ-0JB">
+                    <rect key="frame" x="30" y="20" width="200" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="AMc-ts-gWl"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                    <color key="textColor" red="0.96078431369999995" green="0.7725490196" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="服务器地址" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="e7F-se-Obf">
+                    <rect key="frame" x="30" y="65" width="200" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="64x-Pv-YLz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="服务器端口" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="apd-IL-Ion">
+                    <rect key="frame" x="30" y="110" width="200" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="P2G-ep-qhj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="安全传输" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yee-5a-Sbv">
+                    <rect key="frame" x="30" y="150" width="48" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="BFT-RT-jYj"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qtn-o9-MDf">
+                    <rect key="frame" x="30" y="190" width="68" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="L5g-eN-M9q"/>
+                        <constraint firstAttribute="width" constant="68" id="ewr-dC-lqp"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="home_button_save.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="saveButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="8tf-JL-cUv"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QYZ-cI-wQl">
+                    <rect key="frame" x="162" y="190" width="68" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="NaC-oE-BR5"/>
+                        <constraint firstAttribute="width" constant="68" id="o6W-t1-zMv"/>
+                    </constraints>
+                    <state key="normal" backgroundImage="home_button_exit.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hm2-V3-yjI"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B8I-Pn-ovw">
+                    <rect key="frame" x="83" y="150" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="30" id="JJ2-bg-XMm"/>
+                        <constraint firstAttribute="height" constant="30" id="sst-pN-Nh6"/>
+                    </constraints>
+                    <state key="normal" image="sign_checkbox_bg_01.png"/>
+                    <state key="selected" image="sign_checkbox_bg_02.png"/>
+                    <variation key="heightClass=compact" fixedFrame="YES">
+                        <rect key="frame" x="90" y="175" width="30" height="30"/>
+                    </variation>
+                    <connections>
+                        <action selector="securityButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="vPx-63-a4q"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="apd-IL-Ion" firstAttribute="trailing" secondItem="jcH-kQ-0JB" secondAttribute="trailing" id="1zW-aa-8lF"/>
+                <constraint firstItem="Gy7-wA-rmM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="36q-Sj-Le5"/>
+                <constraint firstItem="e7F-se-Obf" firstAttribute="leading" secondItem="jcH-kQ-0JB" secondAttribute="leading" id="BVB-hW-ZrW"/>
+                <constraint firstAttribute="trailing" secondItem="Gy7-wA-rmM" secondAttribute="trailing" id="CB1-Yf-pw9"/>
+                <constraint firstItem="Qtn-o9-MDf" firstAttribute="leading" secondItem="jcH-kQ-0JB" secondAttribute="leading" id="CPp-F4-pDv"/>
+                <constraint firstItem="Yee-5a-Sbv" firstAttribute="leading" secondItem="jcH-kQ-0JB" secondAttribute="leading" id="DNp-Kp-gPh"/>
+                <constraint firstItem="QYZ-cI-wQl" firstAttribute="trailing" secondItem="jcH-kQ-0JB" secondAttribute="trailing" id="DUL-e0-0Cl"/>
+                <constraint firstItem="jcH-kQ-0JB" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="E8E-hQ-Opf"/>
+                <constraint firstItem="Gy7-wA-rmM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FEv-o2-SG0"/>
+                <constraint firstAttribute="trailing" secondItem="jcH-kQ-0JB" secondAttribute="trailing" constant="30" id="Fge-TO-IUl"/>
+                <constraint firstItem="Yee-5a-Sbv" firstAttribute="top" secondItem="apd-IL-Ion" secondAttribute="bottom" constant="10" id="JRx-H5-xjd"/>
+                <constraint firstItem="B8I-Pn-ovw" firstAttribute="leading" secondItem="Yee-5a-Sbv" secondAttribute="trailing" constant="5" id="JzW-Ft-nSb"/>
+                <constraint firstItem="apd-IL-Ion" firstAttribute="top" secondItem="e7F-se-Obf" secondAttribute="bottom" constant="15" id="LdU-Eg-qY6"/>
+                <constraint firstItem="e7F-se-Obf" firstAttribute="top" secondItem="jcH-kQ-0JB" secondAttribute="bottom" constant="15" id="N42-9d-Aj3"/>
+                <constraint firstAttribute="bottom" secondItem="Gy7-wA-rmM" secondAttribute="bottom" id="VW3-uU-DBg"/>
+                <constraint firstItem="jcH-kQ-0JB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="Yba-OT-Au1"/>
+                <constraint firstItem="B8I-Pn-ovw" firstAttribute="top" secondItem="Yee-5a-Sbv" secondAttribute="top" id="a10-Q0-eTw"/>
+                <constraint firstItem="Qtn-o9-MDf" firstAttribute="top" secondItem="B8I-Pn-ovw" secondAttribute="bottom" constant="10" id="eND-48-qNH"/>
+                <constraint firstItem="QYZ-cI-wQl" firstAttribute="top" secondItem="Qtn-o9-MDf" secondAttribute="top" id="nbK-s5-hEJ"/>
+                <constraint firstItem="e7F-se-Obf" firstAttribute="trailing" secondItem="jcH-kQ-0JB" secondAttribute="trailing" id="qff-on-lbh"/>
+                <constraint firstItem="apd-IL-Ion" firstAttribute="leading" secondItem="jcH-kQ-0JB" secondAttribute="leading" id="xw4-DT-3NW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="securityButton" destination="B8I-Pn-ovw" id="RUA-8T-02M"/>
+                <outlet property="serverAddress" destination="e7F-se-Obf" id="G6m-ey-W90"/>
+                <outlet property="serverPort" destination="apd-IL-Ion" id="zjb-cW-uOD"/>
+                <outlet property="title" destination="jcH-kQ-0JB" id="TFx-En-LwK"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="home_button_exit.png" width="186" height="109"/>
+        <image name="home_button_save.png" width="186" height="109"/>
+        <image name="home_setting_bg.png" width="547" height="383"/>
+        <image name="sign_checkbox_bg_01.png" width="56" height="56"/>
+        <image name="sign_checkbox_bg_02.png" width="56" height="56"/>
+    </resources>
+</document>

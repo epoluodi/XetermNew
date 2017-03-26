@@ -68,8 +68,6 @@
 		3FF73A501DB0766300E1B814 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF73A4E1DB0766300E1B814 /* Main.storyboard */; };
 		3FF73A521DB0766300E1B814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF73A511DB0766300E1B814 /* Assets.xcassets */; };
 		3FF73A551DB0766300E1B814 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF73A531DB0766300E1B814 /* LaunchScreen.storyboard */; };
-		3FF73A601DB0766300E1B814 /* XetermTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF73A5F1DB0766300E1B814 /* XetermTests.m */; };
-		3FF73A6B1DB0766300E1B814 /* XetermUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF73A6A1DB0766300E1B814 /* XetermUITests.m */; };
 		3FF73A7A1DB0862300E1B814 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF73A791DB0862300E1B814 /* MainViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -192,11 +190,7 @@
 		3FF73A541DB0766300E1B814 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FF73A561DB0766300E1B814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF73A5B1DB0766300E1B814 /* Xeterm.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xeterm.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FF73A5F1DB0766300E1B814 /* XetermTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XetermTests.m; sourceTree = "<group>"; };
-		3FF73A611DB0766300E1B814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF73A661DB0766300E1B814 /* Xeterm.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xeterm.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3FF73A6A1DB0766300E1B814 /* XetermUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XetermUITests.m; sourceTree = "<group>"; };
-		3FF73A6C1DB0766300E1B814 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FF73A781DB0862300E1B814 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3FF73A791DB0862300E1B814 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -231,7 +225,8 @@
 			children = (
 				3F01486B1DBA04F4002995FB /* GCD */,
 			);
-			path = Socket;
+			name = Socket;
+			path = Tools/Socket;
 			sourceTree = "<group>";
 		};
 		3F01486B1DBA04F4002995FB /* GCD */ = {
@@ -295,7 +290,8 @@
 				3F23076B1DB5C7E300A23FD0 /* ViewController+MASAdditions.h */,
 				3F23076C1DB5C7E300A23FD0 /* ViewController+MASAdditions.m */,
 			);
-			path = Masonry;
+			name = Masonry;
+			path = Tools/Masonry;
 			sourceTree = "<group>";
 		};
 		3F23077C1DB61B9500A23FD0 /* Placeholder */ = {
@@ -304,7 +300,8 @@
 				3F23077D1DB61B9500A23FD0 /* UIPlaceHolderTextView.h */,
 				3F23077E1DB61B9500A23FD0 /* UIPlaceHolderTextView.m */,
 			);
-			path = Placeholder;
+			name = Placeholder;
+			path = Views/Placeholder;
 			sourceTree = "<group>";
 		};
 		3F57CDAA1DB4C42A0086A633 /* Shortcut */ = {
@@ -361,7 +358,8 @@
 				3F67866C1DC07D4C0060C494 /* WebViewController.m */,
 				3F67866D1DC07D4C0060C494 /* WebViewController.xib */,
 			);
-			path = WebView;
+			name = WebView;
+			path = Tools/WebView;
 			sourceTree = "<group>";
 		};
 		3FAB71C01DBCE28900E06F09 /* HexColor */ = {
@@ -403,17 +401,14 @@
 		3FBE89611DB460B7004F272A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				3F0B3F3E1DBCD28100758B07 /* WaitView */,
+				3F6786611DC03E4E0060C494 /* Alert */,
 				3FBE896F1DB46144004F272A /* Defines.h */,
 				3F6786711DC0812A0060C494 /* ToolUtil.h */,
 				3F6786701DC0812A0060C494 /* ToolUtil.m */,
-				3F67866A1DC07D4C0060C494 /* WebView */,
-				3F6786611DC03E4E0060C494 /* Alert */,
 				3F67865C1DC03CBD0060C494 /* KeyChain */,
 				3F58BA111DBE053900265409 /* ColorText */,
 				3FAB71C01DBCE28900E06F09 /* HexColor */,
-				3F01486A1DBA04F4002995FB /* Socket */,
-				3F2307531DB5C7E300A23FD0 /* Masonry */,
-				3F0B3F3E1DBCD28100758B07 /* WaitView */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -421,7 +416,6 @@
 		3FBE89621DB460FF004F272A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3F23077C1DB61B9500A23FD0 /* Placeholder */,
 				3FC7531A1DB50DFB00CD7828 /* Sidebar */,
 				3F57CDB01DB4CBBB0086A633 /* Advice */,
 				3F57CDAA1DB4C42A0086A633 /* Shortcut */,
@@ -465,8 +459,6 @@
 			isa = PBXGroup;
 			children = (
 				3FF73A441DB0766300E1B814 /* Xeterm */,
-				3FF73A5E1DB0766300E1B814 /* XetermTests */,
-				3FF73A691DB0766300E1B814 /* XetermUITests */,
 				3FF73A431DB0766300E1B814 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -484,22 +476,14 @@
 		3FF73A441DB0766300E1B814 /* Xeterm */ = {
 			isa = PBXGroup;
 			children = (
-				3FF73A481DB0766300E1B814 /* AppDelegate.h */,
-				3FF73A491DB0766300E1B814 /* AppDelegate.m */,
-				3F6705291DC9BCB00059201C /* BaseViewController.h */,
-				3F67052A1DC9BCB00059201C /* BaseViewController.m */,
-				3FF73A4B1DB0766300E1B814 /* LoginViewController.h */,
-				3FF73A4C1DB0766300E1B814 /* LoginViewController.m */,
-				3FF73A781DB0862300E1B814 /* MainViewController.h */,
-				3FF73A791DB0862300E1B814 /* MainViewController.m */,
-				3FF73A4E1DB0766300E1B814 /* Main.storyboard */,
+				5C12A5901E8623DB00B602DF /* Lib */,
+				5C12A58F1E86234300B602DF /* RES */,
+				5C12A58E1E86232C00B602DF /* ViewController */,
+				5C12A58D1E86231700B602DF /* Base */,
+				5C12A58C1E86230900B602DF /* System */,
 				3FBE89621DB460FF004F272A /* Views */,
 				3F0148751DBA0583002995FB /* Networking */,
 				3FBE89611DB460B7004F272A /* Tools */,
-				3FBE89501DB45908004F272A /* Images */,
-				3FF73A511DB0766300E1B814 /* Assets.xcassets */,
-				3FF73A531DB0766300E1B814 /* LaunchScreen.storyboard */,
-				3FF73A561DB0766300E1B814 /* Info.plist */,
 				3FF73A451DB0766300E1B814 /* Supporting Files */,
 			);
 			path = Xeterm;
@@ -514,22 +498,56 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		3FF73A5E1DB0766300E1B814 /* XetermTests */ = {
+		5C12A58C1E86230900B602DF /* System */ = {
 			isa = PBXGroup;
 			children = (
-				3FF73A5F1DB0766300E1B814 /* XetermTests.m */,
-				3FF73A611DB0766300E1B814 /* Info.plist */,
+				3F23077C1DB61B9500A23FD0 /* Placeholder */,
+				3FF73A481DB0766300E1B814 /* AppDelegate.h */,
+				3FF73A491DB0766300E1B814 /* AppDelegate.m */,
 			);
-			path = XetermTests;
+			name = System;
 			sourceTree = "<group>";
 		};
-		3FF73A691DB0766300E1B814 /* XetermUITests */ = {
+		5C12A58D1E86231700B602DF /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				3FF73A6A1DB0766300E1B814 /* XetermUITests.m */,
-				3FF73A6C1DB0766300E1B814 /* Info.plist */,
+				3F6705291DC9BCB00059201C /* BaseViewController.h */,
+				3F67052A1DC9BCB00059201C /* BaseViewController.m */,
 			);
-			path = XetermUITests;
+			name = Base;
+			sourceTree = "<group>";
+		};
+		5C12A58E1E86232C00B602DF /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				3F67866A1DC07D4C0060C494 /* WebView */,
+				3FF73A4B1DB0766300E1B814 /* LoginViewController.h */,
+				3FF73A4C1DB0766300E1B814 /* LoginViewController.m */,
+				3FF73A781DB0862300E1B814 /* MainViewController.h */,
+				3FF73A791DB0862300E1B814 /* MainViewController.m */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		5C12A58F1E86234300B602DF /* RES */ = {
+			isa = PBXGroup;
+			children = (
+				3FBE89501DB45908004F272A /* Images */,
+				3FF73A561DB0766300E1B814 /* Info.plist */,
+				3FF73A511DB0766300E1B814 /* Assets.xcassets */,
+				3FF73A531DB0766300E1B814 /* LaunchScreen.storyboard */,
+				3FF73A4E1DB0766300E1B814 /* Main.storyboard */,
+			);
+			name = RES;
+			sourceTree = "<group>";
+		};
+		5C12A5901E8623DB00B602DF /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				3F2307531DB5C7E300A23FD0 /* Masonry */,
+				3F01486A1DBA04F4002995FB /* Socket */,
+			);
+			name = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -729,7 +747,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FF73A601DB0766300E1B814 /* XetermTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -737,7 +754,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3FF73A6B1DB0766300E1B814 /* XetermUITests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

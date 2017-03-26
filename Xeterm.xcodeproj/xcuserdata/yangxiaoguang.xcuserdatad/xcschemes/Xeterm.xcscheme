@@ -28,26 +28,6 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3FF73A5A1DB0766300E1B814"
-               BuildableName = "Xeterm.xctest"
-               BlueprintName = "XetermTests"
-               ReferencedContainer = "container:Xeterm.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3FF73A651DB0766300E1B814"
-               BuildableName = "Xeterm.xctest"
-               BlueprintName = "XetermUITests"
-               ReferencedContainer = "container:Xeterm.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

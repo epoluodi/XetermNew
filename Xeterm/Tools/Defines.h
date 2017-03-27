@@ -87,6 +87,9 @@ alpha:1.0]
 #define Normal_Alert_Text @"温馨提示"
 #define Fail_Plist_Write @"文件写入失败"
 
+#define GLOBALQ dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+#define MAINQ dispatch_get_main_queue()
+
 #endif
 
 

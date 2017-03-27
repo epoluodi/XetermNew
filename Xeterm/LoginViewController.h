@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface LoginViewController : BaseViewController
+#import "CoreServer.h"
+@interface LoginViewController : BaseViewController<CoreServerDelegate>
 
 // 帐号
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;

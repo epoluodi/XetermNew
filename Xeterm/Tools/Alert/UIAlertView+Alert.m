@@ -18,7 +18,10 @@ static alertBlocks _alertBlock;
 {
     _alertBlock = alertBlocks;
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:msgString delegate:[self self] cancelButtonTitle:@"确认" otherButtonTitles:nil, nil];
-    [alertView show];
+    dispatch_async(MAINQ, ^{
+        [alertView show];
+    });
+
     
 }
 
@@ -30,7 +33,9 @@ static alertBlocks _alertBlock;
 {
     _alertBlock = alertBlocks;
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:msgString delegate:[self self] cancelButtonTitle:cancelTitle otherButtonTitles:otherTitle, nil];
-    [alertView show];
+    dispatch_async(MAINQ, ^{
+        [alertView show];
+    });
 }
 
 

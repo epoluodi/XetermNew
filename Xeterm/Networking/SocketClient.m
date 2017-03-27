@@ -69,8 +69,13 @@ static SocketClient *socketClientManager = nil;
         [_socket disconnect];
     }
 
-    [_socket connectToHost:host onPort:[port integerValue] error:nil];
-    [_socket readDataWithTimeout:-1 tag:0];
+   
+    dispatch_async(GLOBALQ, ^{
+        [_socket connectToHost:host onPort:[port integerValue] error:nil];
+        [_socket readDataWithTimeout:-1 tag:0];
+    });
+    
+
     
 }
 
@@ -169,7 +174,7 @@ static SocketClient *socketClientManager = nil;
 // 读取成功
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag {
         
-//    NSLog(@"--0--data = %@", data);
+    NSLog(@"--0--data = %@", data);
     
     if(_muDataCount == 0 && _muData.length == 0) {
         

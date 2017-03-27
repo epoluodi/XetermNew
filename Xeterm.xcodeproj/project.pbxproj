@@ -69,6 +69,7 @@
 		3FF73A521DB0766300E1B814 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FF73A511DB0766300E1B814 /* Assets.xcassets */; };
 		3FF73A551DB0766300E1B814 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FF73A531DB0766300E1B814 /* LaunchScreen.storyboard */; };
 		3FF73A7A1DB0862300E1B814 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FF73A791DB0862300E1B814 /* MainViewController.m */; };
+		B448A6EF1E88ECF20027F5A2 /* CoreServer.m in Sources */ = {isa = PBXBuildFile; fileRef = B448A6EE1E88ECF20027F5A2 /* CoreServer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +194,8 @@
 		3FF73A661DB0766300E1B814 /* Xeterm.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Xeterm.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FF73A781DB0862300E1B814 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3FF73A791DB0862300E1B814 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		B448A6ED1E88ECF20027F5A2 /* CoreServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreServer.h; sourceTree = "<group>"; };
+		B448A6EE1E88ECF20027F5A2 /* CoreServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreServer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +251,8 @@
 				3F0148771DBA058C002995FB /* SocketClient.m */,
 				3F2D27C61DBBA6FD00499A5E /* ServerResult.h */,
 				3F2D27C71DBBA6FD00499A5E /* ServerResult.m */,
+				B448A6ED1E88ECF20027F5A2 /* CoreServer.h */,
+				B448A6EE1E88ECF20027F5A2 /* CoreServer.m */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -725,6 +730,7 @@
 				3F0148781DBA058C002995FB /* SocketClient.m in Sources */,
 				3F2307701DB5C7E300A23FD0 /* MASLayoutConstraint.m in Sources */,
 				3F0148731DBA04F4002995FB /* GCDAsyncUdpSocket.m in Sources */,
+				B448A6EF1E88ECF20027F5A2 /* CoreServer.m in Sources */,
 				3F67865F1DC03CBD0060C494 /* SFHFKeychainUtils.m in Sources */,
 				3F6786721DC0812A0060C494 /* ToolUtil.m in Sources */,
 				3F0148721DBA04F4002995FB /* GCDAsyncSocket.m in Sources */,

@@ -357,7 +357,7 @@
     
     
     
-    NSString *waitText = [NSString stringWithFormat:@"【接受等待】%@", dic[@"ep"]];
+    NSString *waitText = [NSString stringWithFormat:@"【接收等待】%@", dic[@"ep"]];
     _waitRequestStr = [[NSAttributedString alloc] initWithString:waitText attributes:@{NSForegroundColorAttributeName: [UIColor colorWithHexString:@"FF0000"]}];
 }
 

@@ -15,6 +15,7 @@
 #import "WebViewController.h"
 #import "ToolUtil.h"
 
+
 @interface LoginViewController () <UITextFieldDelegate>
 {
     UIView *_shieldView;            // 遮挡视图
@@ -24,6 +25,7 @@
     
     SocketClient *_client;
     WaitView *_waitView;
+    __block CoreServer *_coreServer;     //网络交互控制类
 }
 
 
@@ -35,6 +37,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    //设置网络交互控制类
+    _coreServer = [[CoreServer alloc] init];
+    _coreServer.delegate = self;
+    
     
     [self initializeUserData];
     [self initializeUserInterface];
@@ -154,18 +161,25 @@
     if(![self checkoutUserLoginInfo]) {
         return ;
     }
-    
-    
+  
+
     [_waitView startAnimating];
     // 建立连接
     [_client createSocketConnectionWithHost:_client.host port:_client.port success:^(BOOL state) {
         
-        // 请求DNS
-        [self requestNDS];
+        _coreServer.client = _client;
+        _coreServer.serverAddress =[APPDELEGATE judgeStringContent:[APPDELEGATE readUserObjForKey:ServerAddressKey]];
+        _coreServer.serverPort = _settingView.serverPort.text;
+        _coreServer.userName =_nameTextField.text;
+        _coreServer.userPwd = _pwdTextField.text;
+        _coreServer.appVer = _versionView.appVersion;
+        [_coreServer requestNDS];
+ 
 
     } failure:^(BOOL state) {
-        
-        [_waitView stopAnimating];
+        dispatch_async(MAINQ, ^{
+            [_waitView stopAnimating];
+        });
     }];
 }
 
@@ -241,117 +255,32 @@
 }
 
 
-#pragma mark - Request
+#pragma mark CoreServerDelegate
 
-- (void)requestNDS{
-    
-    NSString *uuid =  [SFHFKeychainUtils getPasswordForUsername:UUID_KEY_NAME
-                                                 andServiceName:UUID_KEY_SERVICE_NAME
-                                                          error:nil];
-    if(!uuid)
-    {
-        uuid = [[UIDevice currentDevice].identifierForVendor UUIDString];
-        [SFHFKeychainUtils storeUsername:UUID_KEY_NAME
-                             andPassword:uuid
-                          forServiceName:UUID_KEY_SERVICE_NAME
-                          updateExisting:1
-                                   error:nil];
-    }
-    
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:@"dns" forKey:@"cmd"];
-    [dic setObject:uuid forKey:@"mac"];
-    [dic setObject:@"1" forKey:@"hname"];
-    [dic setObject:@"1" forKey:@"hip"];
-    [dic setObject:@"1" forKey:@"hport"];
-    [dic setObject:@"1" forKey:@"ext"];
-    
-    [_client sendMessage:dic result:^(ServerResult *result) {
-        
-        if([result.cmdStr isEqualToString:@"dns"] && result.retCode) {
-            
-            if([[result.resultDic allKeys] containsObject:@"alipay"] &&
-               [result.resultDic[@"alipay"] boolValue]) {
-                self.payButton.hidden = NO;
-            } else {
-                self.payButton.hidden = YES;
-            }
-            
-            [_client createSocketConnectionWithHost:result.dnsDic[@"hip"] port:result.dnsDic[@"hport"] success:^(BOOL state) {
-                [self requestLogin];
-                
-            } failure:^(BOOL state) {
-                if(!state) {
-                    [_waitView stopAnimating];
-                }
-            }];
-            
-        } else {
-            [_waitView stopAnimating];
-        }
-    }];
+-(void)PayResult:(Boolean)on
+{
+    self.payButton.hidden =on;
 }
 
-- (void)requestLogin {
-    
-    NSString *uuid =  [SFHFKeychainUtils getPasswordForUsername:UUID_KEY_NAME
-                                                 andServiceName:UUID_KEY_SERVICE_NAME
-                                                          error:nil];
-    if(!uuid)
-    {
-        uuid = [[UIDevice currentDevice].identifierForVendor UUIDString];
-        [SFHFKeychainUtils storeUsername:UUID_KEY_NAME
-                             andPassword:uuid
-                          forServiceName:UUID_KEY_SERVICE_NAME
-                          updateExisting:1
-                                   error:nil];
-    }
-    
-    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:@"login" forKey:@"cmd"];
-    [dic setObject:uuid forKey:@"mac"];
-    [dic setObject:_settingView.serverAddress.text forKey:@"host"];
-    [dic setObject:_settingView.serverPort.text forKey:@"port"];
-    [dic setObject:self.nameTextField.text forKey:@"account"];
-    [dic setObject:self.pwdTextField.text forKey:@"password"];
-    [dic setObject:_versionView.appVersion forKey:@"ver"];
-    [dic setObject:@"1" forKey:@"term"];
-    [dic setObject:@"0" forKey:@"updating"];
-    [dic setObject:@"1" forKey:@"ext"];
-    
-    BOOL ssl = [[APPDELEGATE readUserObjForKey:SecureTransportKey] boolValue];
-    if(ssl) {
-        [dic setObject:@"1" forKey:@"ssl"];
-    } else {
-        [dic setObject:@"0" forKey:@"ssl"];
-    }
-    
-    [_client sendMessage:dic result:^(ServerResult *result) {
-        
-        if([result.cmdStr isEqualToString:@"login"]) {
-            [_waitView stopAnimating];
-            if(result.retCode) {
-                
-                MainViewController *mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-                
-                [self presentViewController:mainVC animated:YES completion:^{
-                    
-                    [mainVC showTitleText:result.loginDic];
-                    
-                    [APPDELEGATE saveUserObj:self.nameTextField.text forKey:UserNameKey];
-                    [APPDELEGATE saveUserObj:self.pwdTextField.text forKey:PasswordKey];
-                    }];
-            } else {
-                [_client closeSocketConnection];
-            }
-        } else {
-            if([result.cmdStr isEqualToString:@"raw"]) {
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:LoginWelcomeToLanguageKey object:nil userInfo:@{@"message":result.messageStr}];
-            }
-        }
-    }];
+-(void)WaitViewStop
+{
+    [_waitView stopAnimating];
 }
+
+-(void)openMainViewController:(NSDictionary *)loginDic
+{
+    MainViewController *mainVC = [self.storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+    
+    [self presentViewController:mainVC animated:YES completion:^{
+        
+        [mainVC showTitleText:loginDic];
+        
+        [APPDELEGATE saveUserObj:self.nameTextField.text forKey:UserNameKey];
+        [APPDELEGATE saveUserObj:self.pwdTextField.text forKey:PasswordKey];
+    }];
+
+}
+#pragma mark -
 
 
 

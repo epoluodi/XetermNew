@@ -65,7 +65,7 @@
                                              action:@selector(processgestureReconizer:)];
         singleTap.numberOfTapsRequired = 1;
         _bgLabel.userInteractionEnabled = NO;
-        [_bgLabel addGestureRecognizer:singleTap];
+//        [_bgLabel addGestureRecognizer:singleTap];//loading 指示器，取消点击操作
     }
     
     return self;

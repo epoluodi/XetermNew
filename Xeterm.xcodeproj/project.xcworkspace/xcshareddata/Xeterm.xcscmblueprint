@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "1B61F7B8DCBC172CDC95475718908A23442E2B7F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "1046e180-d2c0-4263-a5b6-2323772678c8++5326" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "1046e180-d2c0-4263-a5b6-2323772678c8++5326" : 9223372036854775807,
+    "1B61F7B8DCBC172CDC95475718908A23442E2B7F" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "B551E650-21FB-4800-96C7-2FC08FFC8895",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "1046e180-d2c0-4263-a5b6-2323772678c8++5326" : "",
+    "1B61F7B8DCBC172CDC95475718908A23442E2B7F" : "XetermNew\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Xeterm",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Xeterm.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "svn:\/\/115.29.41.197:3391",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1046e180-d2c0-4263-a5b6-2323772678c8++5326"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/epoluodi\/XetermNew",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "1B61F7B8DCBC172CDC95475718908A23442E2B7F"
+    }
+  ]
+}

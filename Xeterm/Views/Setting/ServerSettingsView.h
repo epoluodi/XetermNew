@@ -20,12 +20,12 @@ typedef void(^ButtonAction) (UIButton *sender);
 /**
  *  服务器地址
  */
-@property (weak, nonatomic) IBOutlet UITextField *serverAddress;
+@property (weak, nonatomic) IBOutlet __block UITextField *serverAddress;
 
 /**
  *  服务器端口
  */
-@property (weak, nonatomic) IBOutlet UITextField *serverPort;
+@property (weak, nonatomic) IBOutlet __block UITextField *serverPort;
 
 /**
  *  安全传输

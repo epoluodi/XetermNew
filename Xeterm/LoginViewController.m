@@ -166,15 +166,14 @@
     [_waitView startAnimating];
     // 建立连接
     [_client createSocketConnectionWithHost:_client.host port:_client.port success:^(BOOL state) {
-        
         _coreServer.client = _client;
-        _coreServer.serverAddress =[APPDELEGATE judgeStringContent:[APPDELEGATE readUserObjForKey:ServerAddressKey]];
-        _coreServer.serverPort = _settingView.serverPort.text;
+        _coreServer.serverAddress=_settingView.serverAddress.text;
+        _coreServer.serverPort=_settingView.serverPort.text;
         _coreServer.userName =_nameTextField.text;
         _coreServer.userPwd = _pwdTextField.text;
         _coreServer.appVer = _versionView.appVersion;
         [_coreServer requestNDS];
- 
+     
 
     } failure:^(BOOL state) {
         dispatch_async(MAINQ, ^{

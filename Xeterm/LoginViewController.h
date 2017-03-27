@@ -11,9 +11,9 @@
 @interface LoginViewController : BaseViewController<CoreServerDelegate>
 
 // 帐号
-@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet __block UITextField *nameTextField;
 // 密码
-@property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
+@property (weak, nonatomic) IBOutlet __block UITextField *pwdTextField;
 // 记住密码按键
 @property (weak, nonatomic) IBOutlet UIButton *rememberPwdButton;
 // 登录按键

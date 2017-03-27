@@ -23,11 +23,11 @@
 //设定sock类
 @property (weak,nonatomic)SocketClient *client;
 @property (weak,nonatomic)NSObject<CoreServerDelegate> * delegate;
-@property (weak,nonatomic)NSString *serverAddress;
-@property (weak,nonatomic)NSString *serverPort;
-@property (weak,nonatomic)NSString *userName;
-@property (weak,nonatomic)NSString *userPwd;
-@property (weak,nonatomic)NSString *appVer;
+@property (copy,nonatomic)NSString *serverAddress;
+@property (copy,nonatomic)NSString *serverPort;
+@property (copy,nonatomic)NSString *userName;
+@property (copy,nonatomic)NSString *userPwd;
+@property (copy,nonatomic)NSString *appVer;
 //请求DNS
 - (void)requestNDS;
 @end

@@ -113,10 +113,14 @@
     
     NSString *path = [APPDELEGATE readPlistPathWithName:HistoryListPlistName];
     
-    if(![_historyArray containsObject:key]) {
-        [_historyArray addObject:key];
-        [APPDELEGATE savePlistArray:_historyArray plistPath:path];
-    }
+//    if(![_historyArray containsObject:key]) {
+//        [_historyArray addObject:key];
+//        [APPDELEGATE savePlistArray:_historyArray plistPath:path];
+//    }
+
+    [_historyArray addObject:key];
+    [APPDELEGATE savePlistArray:_historyArray plistPath:path];
+    
     
     if(!_listType) {
         [self reloadTableData];

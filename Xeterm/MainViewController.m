@@ -94,7 +94,7 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillShowNotification object:nil];
    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)initializeUserInterface {
@@ -104,6 +104,7 @@
     
     self.textView.delegate = self;
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
+    _textView.keyboardType = UIKeyboardTypeASCIICapable;
 //    self.textView.font = [UIFont fontWithName:@"Courier New" size:12];
     self.textView.font = _textFont;
     _textView.layoutManager.allowsNonContiguousLayout=NO;
@@ -316,7 +317,7 @@
     
     [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
     _textView.selectedRange =NSMakeRange(_textView.text.length, 0);
-    [_textView becomeFirstResponder];
+    //[_textView becomeFirstResponder];
 }
 
 - (void)showDefaultColorText:(NSString *)text {
@@ -399,7 +400,8 @@
     
  
     
-    [self.view layoutIfNeeded];
+    
+//    [self.view layoutIfNeeded];
 //    [_textView scrollRangeToVisible:_textView.selectedRange];
 }
 
@@ -497,7 +499,7 @@
 
 // 发送
 - (IBAction)sendCmdButtonAction:(id)sender {
-//    [self.view endEditing:YES];
+    [self.view endEditing:YES];
     [self showSidebarViewWithState:NO];
     
     NSString *key = [self lastCmdStr];
@@ -577,7 +579,7 @@
 - (void)textViewDidEndEditing:(UITextView *)textView {
     
     if(textView == _textView) {
-        [_textView scrollRangeToVisible:_textView.selectedRange];
+       
         [_textView mas_remakeConstraints:^(MASConstraintMaker *make) {
 //            make.top.equalTo(self.view.mas_top).offset(40);
             make.top.equalTo(self.topView.mas_bottom);
@@ -587,7 +589,7 @@
         }];
         
         [self.view layoutIfNeeded];
-     
+    //   [_textView scrollRangeToVisible:_textView.selectedRange];
         
         return ;
     }

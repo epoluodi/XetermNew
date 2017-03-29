@@ -104,7 +104,7 @@
     
     self.textView.delegate = self;
     self.textView.autocorrectionType = UITextAutocorrectionTypeNo;
-    _textView.keyboardType = UIKeyboardTypeASCIICapable;
+    _textView.keyboardType = UIKeyboardTypeDefault;
 //    self.textView.font = [UIFont fontWithName:@"Courier New" size:12];
     self.textView.font = _textFont;
     _textView.layoutManager.allowsNonContiguousLayout=NO;

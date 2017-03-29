@@ -69,7 +69,7 @@ alpha:1.0]
 
 #define REPLATED_START_FLAG @"$$"
 //#define START_WORD @"▶"
-#define START_WORD @"➤"
+#define START_WORD @"▶"
 #define SECURE_PORT @"443"
 #define NO_SECURE_PORT @"350"
 #define DEFAULT_FONT_NAME_SIZE [UIFont fontWithName:@"Courier New" size:12]

@@ -141,5 +141,27 @@
 
 
 
+- (void)requestCmdStr:(NSString *)cmdStr {
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:@"raw" forKey:@"cmd"];
+    [dic setObject:cmdStr forKey:@"data"];
+    
+   
+
+    
+    [_client sendMessage:dic result:^(ServerResult *result) {
+//        self.topMiddleLabel.attributedText = _topMiddleAttrStr;
+        dispatch_async(MAINQ, ^{
+            [_delegate WaitViewStop];
+        });
+        if([result.cmdStr isEqualToString:@"raw"]) {
+//            [self showContentText:result.messageStr];
+        }
+    }];
+}
+
+
+
 
 @end

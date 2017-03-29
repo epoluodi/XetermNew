@@ -262,8 +262,20 @@
     // 快捷键
     [weakSideView addShortcutAction:^(NSString *key) {
         // 隐藏侧边栏
-        [self showSidebarViewWithState:NO];
         
+        [self showSidebarViewWithState:NO];
+        if ([[_textView.text substringFromIndex:_textView.text.length-1] isEqualToString:START_WORD])
+        {
+            _textView.selectedRange = NSMakeRange(_textView.text.length, 0);
+          
+        }
+        else
+        {
+            [self showDefaultColorText:@"\n"];
+
+            [self showDefaultColorText:_startWord];
+          
+        }
         [self showDefaultColorText:key];
 //        [self requestCmdStr:key];
     }];
@@ -317,7 +329,8 @@
     
     [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
     _textView.selectedRange =NSMakeRange(_textView.text.length, 0);
-    //[_textView becomeFirstResponder];
+
+
 }
 
 - (void)showDefaultColorText:(NSString *)text {
@@ -326,7 +339,7 @@
     
     _range = _temRange;
     
-    
+    _mainMutAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:_textView.attributedText];
     if(_mainMutAttStr.string.length < _textView.text.length || ![tempStr hasSuffix:text]) {
     
         if(_textView.selectedRange.location >= _textView.text.length) {
@@ -503,8 +516,17 @@
     [self showSidebarViewWithState:NO];
     
     NSString *key = [self lastCmdStr];
+    if ([key isEqualToString:@""])
+    {
+        [self showDefaultColorText:key];
+        [self showContentText:@"无效指令"];
+   
+        return;
+    }
     [_sideView saveHistoryKey:key];
     [self showDefaultColorText:key];
+    self.topMiddleLabel.attributedText = _waitRequestStr;
+//    [self waitViewStartAnimation];
     [self requestCmdStr:key];
 }
 
@@ -579,7 +601,7 @@
 - (void)textViewDidEndEditing:(UITextView *)textView {
     
     if(textView == _textView) {
-       
+
         [_textView mas_remakeConstraints:^(MASConstraintMaker *make) {
 //            make.top.equalTo(self.view.mas_top).offset(40);
             make.top.equalTo(self.topView.mas_bottom);
@@ -589,8 +611,10 @@
         }];
         
         [self.view layoutIfNeeded];
+
     //   [_textView scrollRangeToVisible:_textView.selectedRange];
         
+
         return ;
     }
     

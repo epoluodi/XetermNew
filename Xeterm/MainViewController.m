@@ -125,7 +125,24 @@
     
     
     
+    // 侧边栏
+    _sideView = [[[NSBundle mainBundle] loadNibNamed:@"SidebarView" owner:nil options:nil] firstObject];
+    [self.view addSubview:_sideView];
+    //    [_sideView setTableDelegate:self];
     
+    [_sideView mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            make.width.equalTo(@220);
+            make.top.equalTo(self.view);
+        } else {
+            make.width.equalTo(@250);
+            make.top.equalTo(self.view.mas_top);//.offset(20);
+        }
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+    }];
+
     
     // 将_shieldView插入制定视图之下
     // [self.view insertSubview:_shieldView belowSubview:self.adviceView];
@@ -194,23 +211,6 @@
         make.bottom.equalTo(self.view.mas_bottom);
     }];
     
-    // 侧边栏
-    _sideView = [[[NSBundle mainBundle] loadNibNamed:@"SidebarView" owner:nil options:nil] firstObject];
-    [self.view addSubview:_sideView];
-    //    [_sideView setTableDelegate:self];
-    
-    [_sideView mas_makeConstraints:^(MASConstraintMaker *make) {
-        
-        if([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            make.width.equalTo(@220);
-            make.top.equalTo(self.view);
-        } else {
-            make.width.equalTo(@250);
-            make.top.equalTo(self.view.mas_top);//.offset(20);
-        }
-        make.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
-    }];
     
     // 侧滑
     __weak SidebarView *weakSideView = _sideView;
@@ -326,8 +326,8 @@
     [_mainMutAttStr appendAttributedString:[moreColor colorTextWithString:str]];
     self.textView.attributedText = _mainMutAttStr;
     
-    
-    [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
+    [_textView scrollRectToVisible:CGRectMake(0, _textView.contentSize.height-15, _textView.contentSize.width, 10) animated:NO];
+//    [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
     _textView.selectedRange =NSMakeRange(_textView.text.length, 0);
 
 

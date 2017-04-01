@@ -107,7 +107,7 @@
     _textView.keyboardType = UIKeyboardTypeDefault;
 //    self.textView.font = [UIFont fontWithName:@"Courier New" size:12];
     self.textView.font = _textFont;
-    _textView.layoutManager.allowsNonContiguousLayout=NO;
+//    _textView.layoutManager.allowsNonContiguousLayout=NO;
     
     // 遮挡视图
     _shieldView = [[UIView alloc] init];
@@ -325,10 +325,13 @@
     MoreColorText *moreColor = [MoreColorText shareMoreColorInstance];
     [_mainMutAttStr appendAttributedString:[moreColor colorTextWithString:str]];
     self.textView.attributedText = _mainMutAttStr;
-    
-    [_textView scrollRectToVisible:CGRectMake(0, _textView.contentSize.height-15, _textView.contentSize.width, 10) animated:NO];
-//    [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
-    _textView.selectedRange =NSMakeRange(_textView.text.length, 0);
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_textView scrollRectToVisible:CGRectMake(0, _textView.contentSize.height-15, _textView.contentSize.width, 10) animated:NO];
+        //    [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
+        _textView.selectedRange =NSMakeRange(_textView.text.length, 0);
+    });
+
 
 
 }
@@ -519,7 +522,7 @@
     if ([key isEqualToString:@""])
     {
         [self showDefaultColorText:key];
-        [self showContentText:@"无效指令"];
+//        [self showContentText:@"无效指令"];
    
         return;
     }

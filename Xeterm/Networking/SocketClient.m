@@ -64,8 +64,10 @@ static SocketClient *socketClientManager = nil;
     _linkFailure = nil;
     _linkFailure = failure;
 
-    
+    _muDataCount=0;
+    _muStr = [NSMutableString string];
     if(_socket.isConnected) {
+
         [_socket disconnect];
     }
 

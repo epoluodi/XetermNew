@@ -107,7 +107,7 @@
     _textView.keyboardType = UIKeyboardTypeDefault;
 //    self.textView.font = [UIFont fontWithName:@"Courier New" size:12];
     self.textView.font = _textFont;
-//    _textView.layoutManager.allowsNonContiguousLayout=NO;
+    _textView.layoutManager.allowsNonContiguousLayout=NO;
     
     // 遮挡视图
     _shieldView = [[UIView alloc] init];
@@ -202,6 +202,7 @@
     }];
     
     _waitView = [[WaitView alloc] init];
+    _waitView.isBgHide = YES;
     [self.view addSubview:_waitView];
     
     [_waitView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -326,15 +327,44 @@
     [_mainMutAttStr appendAttributedString:[moreColor colorTextWithString:str]];
     self.textView.attributedText = _mainMutAttStr;
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.15 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [_textView scrollRectToVisible:CGRectMake(0, _textView.contentSize.height-15, _textView.contentSize.width, 10) animated:NO];
-        //    [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
+    
         _textView.selectedRange =NSMakeRange(_textView.text.length, 0);
     });
 
-
+//[_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
 
 }
+
+
+
+- (void)appendContentText:(NSAttributedString *)str {
+    if(self.textView.text.length != 0) {
+        //        [self showDefaultColorText:@"\n"];
+        
+        [_mainMutAttStr appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:@{NSForegroundColorAttributeName: _defaultColor, NSFontAttributeName: _textFont}]];
+    }
+  
+    if(str.length != 0) {
+        _range.location = _textView.text.length + 1;
+    }
+    
+    
+    [_mainMutAttStr appendAttributedString:str];
+    self.textView.attributedText = _mainMutAttStr;
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_textView scrollRectToVisible:CGRectMake(0, _textView.contentSize.height-15, _textView.contentSize.width, 10) animated:NO];
+        
+//        _textView.selectedRange =NSMakeRange(_textView.text.length, 0);
+    });
+    
+//    [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
+    
+}
+
+
 
 - (void)showDefaultColorText:(NSString *)text {
     
@@ -365,6 +395,15 @@
     }
 
     [self.textView scrollRangeToVisible:_textView.selectedRange];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [_textView scrollRectToVisible:CGRectMake(0, _textView.contentSize.height-15, _textView.contentSize.width, 10) animated:NO];
+        //    [_textView scrollRangeToVisible:NSMakeRange(_mainMutAttStr.string.length, 0)];
+//        _textView.selectedRange =NSMakeRange(_textView.text.length, 0);
+    });
+
+    
+    
 }
 
 - (void)showTitleText:(NSDictionary *)dic {
@@ -458,14 +497,33 @@
     [self waitViewStartAnimation];
     self.topMiddleLabel.attributedText = _waitRequestStr;
 
-    
-    [_client sendMessage:dic result:^(ServerResult *result) {
-        self.topMiddleLabel.attributedText = _topMiddleAttrStr;
-        [self waitViewStopAnimation];
-        if([result.cmdStr isEqualToString:@"raw"]) {
-            [self showContentText:result.messageStr];
-        }
-    }];
+    dispatch_async(GLOBALQ, ^{
+        [_client sendMessage:dic result:^(ServerResult *result) {
+            dispatch_async(MAINQ, ^{
+                self.topMiddleLabel.attributedText = _topMiddleAttrStr;
+           
+                
+            });
+            
+            if([result.cmdStr isEqualToString:@"raw"]) {
+                MoreColorText *moreColor = [MoreColorText shareMoreColorInstance];
+                NSAttributedString *attr =[moreColor colorTextWithString:result.messageStr];
+                dispatch_async(MAINQ, ^{
+                    [self waitViewStopAnimation];
+                    [self appendContentText:attr];
+                    
+                });
+            }
+            else
+            {
+                dispatch_async(MAINQ, ^{
+                    [self waitViewStopAnimation];
+               
+                });
+            }
+        }];
+    });
+
 }
 
 

@@ -117,7 +117,8 @@
         dispatch_async(MAINQ, ^{
             [_delegate WaitViewStop];
         });
-        if([result.cmdStr isEqualToString:@"login"]) {
+        if([result.cmdStr isEqualToString:@"login"] ||
+           ([result.cmdStr isEqualToString:@"update"])) {
 
      
             if(result.retCode) {
@@ -129,7 +130,8 @@
   
                 [_client closeSocketConnection];
             }
-        } else {
+        }
+        else {
 
             if([result.cmdStr isEqualToString:@"raw"]) {
                 
